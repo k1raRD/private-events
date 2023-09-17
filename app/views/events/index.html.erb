@@ -1,0 +1,22 @@
+<h1>List of events</h1>
+
+<% @events.each do |event| %>
+  <h2><%= event.title %></h2>
+  <p><%= event.description %></p>
+  <p><%= event.location %></p>
+  <p><%= event.date %></p>
+
+  <% if !current_user.nil?%>
+    <% if current_user&.attended_events.include?(event) %>
+    <%= link_to 'Unattend', unattend_event_path(event), data: { turbo_method: :delete} %>
+    <% else %>
+    <%= link_to 'Attend', attend_event_path(event), data: { turbo_method: :post} %>
+    <% end %>
+  <% end %>
+<% end %>
+<% if !current_user.nil?%>
+  <div>
+    <br>
+    <%= link_to 'Create an event', new_event_path %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<h1>Create an event</h1>
+
+<%= form_with model: @event do |f| %>
+  <div>
+    <%= f.label :title, "Title: "%>
+    <%= f.text_field :title, placeholder: "Enter event title"%>
+  </div>
+
+  <div>
+    <%= f.label :description, "Description: "%>
+    <%= f.text_field :description, placeholder: "Enter event description"%>
+  </div>
+
+  <div>
+    <%= f.label :location, "Location: "%>
+    <%= f.text_field :location, placeholder: "Enter event location"%>
+  </div>
+
+  <div>
+    <%= f.label :date, "Date: "%>
+    <%= f.datetime_field :date, placeholder: "Enter event description"%>
+  </div>
+  
+  <%= f.submit "Create event", disable_with: 'Creating event...'%>
+<% end %>
